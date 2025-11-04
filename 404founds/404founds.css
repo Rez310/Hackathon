@@ -115,3 +115,172 @@ footer {
     padding: 1.5rem;
   }
 }
+
+:root{
+  --bg:#f3f8ff;
+  --card:#ffffff;
+  --accent:#0b74de;
+  --accent-glow: rgba(11,116,222,0.18);
+  --accent-strong:#075bb3;
+  --muted:#5f6a73;
+  --shadow: 0 12px 36px rgba(11,116,222,0.08);
+  --gap:28px;
+  --radius:14px;
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:linear-gradient(180deg,#eef6ff 0%,var(--bg) 100%);
+  color:#0e2630;
+  padding:28px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Conteneur principal */
+.org-chart{
+  max-width:1100px;
+  margin:18px auto;
+  display:flex;
+  flex-direction:column;
+  gap:var(--gap);
+  align-items:center;
+  padding:20px;
+}
+
+/* En-tête */
+.site-header{ text-align:center; margin-bottom:6px; }
+.site-header h1{ color:var(--accent); margin:6px 0; font-size:1.8rem; text-shadow:0 2px 8px rgba(11,116,222,0.12); }
+.site-header p{ margin:0; color:var(--muted); }
+
+/* Niveau (ligne) */
+.level{
+  display:flex;
+  justify-content:center;
+  gap:var(--gap);
+  width:100%;
+  position:relative;
+  padding-top:8px;
+}
+
+/* Cartes / nœuds */
+.node{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:18px 20px;
+  min-width:180px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(11,116,222,0.06);
+  position:relative;
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+/* Photo circulaire avec halo lumineux bleu */
+.team-member img{
+  width:94px;
+  height:94px;
+  object-fit:cover;
+  border-radius:50%;
+  display:block;
+  margin:0 auto 12px;
+  border:4px solid rgba(255,255,255,0.9);
+  box-shadow: 0 6px 18px rgba(11,116,222,0.14), 0 0 22px rgba(11,116,222,0.12);
+  background-clip:padding-box;
+}
+
+/* Chef mis en avant : plus grand, halo plus fort */
+.leader{
+  min-width:300px;
+  padding:22px;
+  border:2px solid var(--accent);
+  background: linear-gradient(180deg, rgba(11,116,222,0.04), var(--card));
+  box-shadow: 0 18px 48px rgba(11,116,222,0.16), 0 0 40px rgba(11,116,222,0.08);
+}
+.leader .team-member img{
+  width:120px;
+  height:120px;
+  margin-bottom:14px;
+  box-shadow: 0 10px 32px rgba(11,116,222,0.2), 0 0 40px rgba(11,116,222,0.18);
+  border:5px solid #ffffff;
+}
+
+/* Titres et rôle */
+.node h3, .node h4, .node h5{ margin:0; font-weight:700; color:var(--accent-strong); }
+.node p{ margin:8px 0 0; color:var(--muted); font-size:0.95rem; }
+
+/* Lien style */
+.node a{ color:var(--accent-strong); text-decoration:none; }
+.node a:hover{ color:var(--accent); text-decoration:underline; }
+
+/* Connecteurs verticaux discrets (dégradé bleu) */
+.level:not(:first-child)::before{
+  content:"";
+  position:absolute;
+  top:-18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:3px;
+  height:18px;
+  background:linear-gradient(180deg,rgba(11,116,222,0.18),rgba(11,116,222,0.04));
+  border-radius:2px;
+}
+
+/* Niveau du milieu : traits plus visibles reliant au leader */
+.level-middle{ align-items:flex-start; }
+.level-middle .node::before{
+  content:"";
+  position:absolute;
+  top:-44px;
+  left:50%;
+  transform:translateX(-50%);
+  width:3px;
+  height:44px;
+  background:linear-gradient(180deg,rgba(11,116,222,0.22),rgba(11,116,222,0.04));
+  border-radius:3px;
+}
+
+/* Bas : colonnes */
+.level-bottom{
+  justify-content:space-between;
+  gap:20px;
+  width:100%;
+  align-items:flex-start;
+}
+.level-bottom .column{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  align-items:center;
+  flex:1;
+}
+
+/* Pastille rôle */
+.node .badge{
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-strong));
+  color:#fff;
+  font-size:0.78rem;
+  box-shadow:0 8px 22px rgba(11,116,222,0.12);
+}
+
+/* Hover */
+.node:hover{ transform:translateY(-6px); box-shadow:0 28px 64px rgba(11,116,222,0.16); border-color: rgba(11,116,222,0.12); }
+
+/* Responsive */
+@media (max-width:960px){
+  .org-chart{ padding:14px; }
+  .leader{ min-width:220px; }
+  .leader .team-member img{ width:96px; height:96px; }
+  .team-member img{ width:72px; height:72px; }
+  .level-middle{ flex-wrap:wrap; justify-content:center; gap:18px; }
+  .level-bottom{ flex-direction:column; align-items:center; }
+  .level-bottom .column{ width:100%; max-width:520px; }
+}

@@ -7,59 +7,102 @@
   <link rel="stylesheet" href="404founds.css" />
 </head>
 <body>
-  <header>
+  <header class="site-header">
     <h1>Notre Équipe de Hackathon</h1>
     <p>6 talents, une mission : innover ensemble !</p>
   </header>
-<section>
-    <div class="team-member">
-      <img src="Harouna.jpg" alt="Harouna" />
-      <h2><a href="people/Harouna.html">Harouna DIAKITÉ</a></h2>
-      <p>Chef de Projet</p>
-    </div>
 
-</section>
-  <section>
-  <main class="team-section">
-    <div class="team-member">
-      <img src="Sevan.jpg" alt="Sevan" />
-      <h2><a href="people/sevan.html">Sevan UBEDA</a></h2>
-      <p>Support Docs</p>
-    </div>
+  <main class="org-chart" role="main" aria-label="Organigramme de l'équipe">
+    <!-- Niveau 1 : Chef de groupe -->
+    <section class="level level-top" aria-label="Chef de groupe">
+      <article class="node leader team-member" aria-labelledby="leader-name">
+        <img src="Harouna.jpg" alt="Portrait de Harouna Diakité" />
+        <h3 id="leader-name"><a href="people/Harouna.html">Harouna DIAKITÉ</a></h3>
+        <p>Chef de Projet</p>
+      </article>
+    </section>
 
+    <!-- Niveau 2 : Managers / supports -->
+    <section class="level level-middle" aria-label="Managers et supports">
+      <article class="node manager team-member" aria-labelledby="sevan-name">
+        <img src="Sevan.jpg" alt="Portrait de Sevan Ubeda" />
+        <h4 id="sevan-name"><a href="people/sevan.html">Sevan UBEDA</a></h4>
+        <p>Support Docs</p>
+      </article>
 
-    <div class="team-member">
-      <img src="Momo.jpg" alt="Momo" />
-      <h2><a href="people/Momo.html">Mohamed MCIRDI</a></h2>
-      <p>Support Docs</p>
-    </div>
+      <article class="node manager team-member" aria-labelledby="momo-name">
+        <img src="Momo.jpg" alt="Portrait de Mohamed Mcirdi" />
+        <h4 id="momo-name"><a href="people/Momo.html">Mohamed MCIRDI</a></h4>
+        <p>Support Docs</p>
+      </article>
 
+      <article class="node manager team-member" aria-labelledby="noah-name">
+        <img src="Noah.jpg" alt="Portrait de Noah Fine" />
+        <h4 id="noah-name"><a href="people/Noah.html">Noah FINE</a></h4>
+        <p>Infra Ops</p>
+      </article>
+    </section>
 
-    <div class="team-member">
-      <img src="Noah.jpg" alt=" Noah" />
-      <h2><a href="people/Noah.html">Noah FINE</a></h2>
-      <p>Infra Ops</p>
-    </div>
-    
+    <!-- Niveau 3 : Équipes marketing / dev -->
+    <section class="level level-bottom" aria-label="Équipes marketing et développement">
+      <div class="column" aria-hidden="false">
+        <article class="node team team-member" aria-labelledby="leo-name">
+          <img src="Leo.jpg" alt="Portrait de Leo Bigote" />
+          <h5 id="leo-name"><a href="people/Leo.html">Leo BIGOTE</a></h5>
+          <p>Marketing Digital / Dev</p>
+        </article>
+      </div>
 
-    <div class="team-member">
-      <img src="Leo.jpg" alt="Leo" />
-      <h2><a href="people/Leo.html">Leo BIGOTE</a></h2>
-      <p>Marketing Digital/Dev</p>
-    </div>
-
-
-    <div class="team-member">
-      <img src="Regis.jpg" alt="Regis" />
-      <h2><a href="people/regis.html">Regis GOMIS</a></h2>
-      <p>Marketing Digital/Dev</p>
-    </div>
+      <div class="column" aria-hidden="false">
+        <article class="node team team-member" aria-labelledby="regis-name">
+          <img src="Regis.jpg" alt="Portrait de Regis Gomis" />
+          <h5 id="regis-name"><a href="people/regis.html">Regis GOMIS</a></h5>
+          <p>Marketing Digital / Dev</p>
+        </article>
+      </div>
+    </section>
   </main>
-  </section>
 
-  <footer>
+  <footer class="site-footer">
     <p>&copy; 2025 Équipe 404founds. Tous droits réservés.</p>
   </footer>
-</body>
 
+  <!-- Code injected by live-server -->
+  <script>
+    // <![CDATA[
+    if ('WebSocket' in window) {
+      (function () {
+        function refreshCSS() {
+          var sheets = [].slice.call(document.getElementsByTagName("link"));
+          var head = document.getElementsByTagName("head")[0];
+          for (var i = 0; i < sheets.length; ++i) {
+            var elem = sheets[i];
+            var parent = elem.parentElement || head;
+            parent.removeChild(elem);
+            var rel = elem.rel;
+            if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+              var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+              elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+            }
+            parent.appendChild(elem);
+          }
+        }
+        var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+        var address = protocol + window.location.host + window.location.pathname + '/ws';
+        var socket = new WebSocket(address);
+        socket.onmessage = function (msg) {
+          if (msg.data == 'reload') window.location.reload();
+          else if (msg.data == 'refreshcss') refreshCSS();
+        };
+        if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+          console.log('Live reload enabled.');
+          sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+        }
+      })();
+    } else {
+      console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+    }
+    // ]]>
+  </script>
+</body>
 </html>
