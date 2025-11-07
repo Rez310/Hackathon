@@ -46,9 +46,63 @@ header p {
 
 .team-section {
   display: grid;
+  /* Par défaut (mobile) : votre grille responsive originale fonctionne bien */
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
+}
+
+@media (min-width: 900px) {
+  .team-section {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "chef     chef    chef"
+      "harouna  harouna harouna"
+      "dev      infra   support"
+      "regis    noah    momo   "
+      "leo      sevan   ."
+      ;
+  }
+
+  #chef {
+    grid-area: chef;
+  }
+
+  #harouna {
+    grid-area: harouna;
+  }
+  
+  #dev{
+    grid-area: dev;
+  }
+
+  #infra{
+    grid-area: infra;
+  }
+
+  #support{
+    grid-area: support;
+  }
+
+  #noah {
+    grid-area: noah;
+  }
+  
+  #regis {
+    grid-area: regis;
+  }
+  
+  #momo {
+    grid-area: momo;
+  }
+  
+  #sevan {
+    grid-area: sevan;
+  }
+  
+  #leo {
+    grid-area: leo;
+  }
 }
 
 .team-member {
@@ -104,6 +158,7 @@ footer {
   font-size: 0.9rem;
   color: #aaa;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
 }
 
 @media (max-width: 600px) {
