@@ -46,7 +46,6 @@ header p {
 
 .team-section {
   display: grid;
-  /* Par défaut (mobile) : votre grille responsive originale fonctionne bien */
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
   margin-top: 3rem;

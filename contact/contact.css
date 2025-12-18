@@ -1,6 +1,3 @@
-/* ==============================================
-   STYLES GLOBAUX (DE TON FICHIER)
-============================================== */
 * {
   margin: 0;
   padding: 0;
@@ -26,119 +23,58 @@ body {
   padding: 2rem;
 }
 
+/* Modifiez le header pour utiliser Flexbox */
 header {
-  text-align: center;
+  /* Supprimez text-align: center; de l'en-tête */
+  /* text-align: center; <--- À supprimer ou commenter */
   padding: 4rem 2rem;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* NOUVEAU: Activez Flexbox */
+  display: flex;
+  /* Alignez les éléments verticalement au centre */
+  align-items: center;
+  /* Organisez les éléments horizontalement (par défaut, ils sont en ligne) */
+  justify-content: space-between;
 }
 
+/* Nouveau style pour le contenu central (H1 et P) */
+.header-content {
+    /* Assurez-vous que le contenu central prend le moins de place possible
+       et est centré dans l'espace flexible restant */
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* Déplacez le style de l'image de la maison ici pour la rendre petite */
+.home img {
+    width: 30px; /* Exemple de petite taille, ajustez si besoin */
+    height: auto;
+    display: block; /* Aide à la mise en page Flexbox */
+}
+
+/* Supprimez cette règle car nous utilisons maintenant Flexbox pour l'alignement */
+/* .home {
+  text-align: end;
+} */
+
+/* Maintenez les autres styles H1 et P */
 header h1 {
   font-size: 3rem;
   font-weight: 800;
   color: #00e5ff;
   text-shadow: 0 0 10px #00e5ff50;
 }
+/* ... */
 
-header p {
-  font-size: 1.2rem;
-  margin-top: 1rem;
-  color: #ccc;
-}
-
-/* ==============================================
-   PAGE ÉQUIPE (DE TON FICHIER)
-============================================== */
-.team-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-/* Ta grille pour la page équipe */
-@media (min-width: 900px) {
-  .team-section {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas:
-      "chef     chef    chef"
-      "harouna  harouna harouna"
-      "dev      infra   support"
-      "regis    noah    momo   "
-      "leo      sevan   ."
-      ;
-  }
-  #chef { grid-area: chef; }
-  #harouna { grid-area: harouna; }
-  #dev{ grid-area: dev; }
-  #infra{ grid-area: infra; }
-  #support{ grid-area: support; }
-  #noah { grid-area: noah; }
-  #regis { grid-area: regis; }
-  #momo { grid-area: momo; }
-  #sevan { grid-area: sevan; }
-  #leo { grid-area: leo; }
-}
-
-/* Style des cartes membres */
-.team-member {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 2rem;
-  text-align: center;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.team-member:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 0 30px rgba(0, 229, 255, 0.3);
-}
-
-.team-member img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-  border: 3px solid #00e5ff;
-  box-shadow: 0 0 10px #00e5ff80;
-}
-
-.team-member h2 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #00e5ff;
-  margin-bottom: 0.5rem;
-}
-
-.team-member p {
-  font-size: 1rem;
-  color: #bbb;
-}
-
-.team-member a {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #00e5ff;
-  margin-bottom: 0.5rem;
-  text-decoration: none;
-}
-
-/* ==============================================
-   PAGE DE CONTACT (STYLES AJOUTÉS)
-============================================== */
 .contact-wrapper {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 3rem;
   margin-top: 3rem;
   padding: 2.5rem;
-  
-  /* DA reprise de .team-member */
   background: rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   backdrop-filter: blur(20px);
@@ -232,14 +168,7 @@ header p {
   color: #00e5ff;
 }
 
-
-/* ==============================================
-   STYLES RESPONSIVE GLOBAUX
-============================================== */
-
-/* Responsive pour Contact ET Équipe */
 @media (max-width: 900px) {
-  /* Fait passer le contact en 1 colonne */
   .contact-wrapper {
     grid-template-columns: 1fr;
   }
@@ -251,7 +180,6 @@ header p {
   }
 }
 
-/* Responsive pour mobile (de ton fichier) */
 @media (max-width: 600px) {
   header h1 {
     font-size: 2.2rem;
@@ -260,16 +188,13 @@ header p {
     padding: 1.5rem;
   }
   .container {
-    padding: 1rem; /* Mieux pour les petits écrans */
+    padding: 1rem;
   }
   .contact-wrapper {
-    padding: 1.5rem; /* Mieux pour les petits écrans */
+    padding: 1.5rem; 
   }
 }
 
-/* ==============================================
-   FOOTER (DE TON FICHIER)
-============================================== */
 footer {
   background: rgba(255, 255, 255, 0.05);
   text-align: center;
